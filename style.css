@@ -1,0 +1,155 @@
+* {
+    -webkit-tap-highlight-color: transparent; /* Disables touch highlight */
+}
+
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(60deg, #020915, #2a4356 );
+}
+
+#cursorBlur{
+    height: 500px;
+    width: 500px;
+    border-radius:  50%;
+    background-image: radial-gradient(rgba(255, 255, 255, 0) 33.33%,white, rgba(255, 255, 255, 0) 50%);
+    position: fixed;
+    filter: blur(80px) grayscale(100%);
+    z-index: -7;
+}
+
+h1{
+    display: none;
+}
+
+img{
+    display: none;
+}
+
+.wrapper{
+    width: max-content;
+    padding: 90px 40px 35px;
+    border-radius: 20px;
+    background: linear-gradient(-65deg,#000,#222,#000,#666,#222 75%);
+    box-shadow: inset 0 1px 1px #ffffff70, 0 0 50px #00000080 inset, 0 5px 15px #00000080, inset -0.4rem 0.4rem #282828;
+}
+
+.piano-keys{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+}
+
+.piano-keys .white{
+    height: 250px;
+    width: 70px;
+    border: 1px solid #000;
+    border-left: 1px solid #fff2;
+    border-bottom: 1px solid #bababa;
+    border-radius: 0 0 5px 5px;
+    box-shadow: -1px 0 0 #ffffffcc inset, 0 0 3px #00000033, inset -15px 0 20px #0006, inset 3px 0 20px #fff, 0 5px 5px #000;
+    background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);
+    color: #0000004d;
+}
+
+.piano-keys .white:active{
+    box-shadow: -1px 0 0 #ffffffcc inset, 0 0 3px #00000033, inset -15px 0 20px #0006, inset 3px 0 20px #fff, 0 5px 5px #000, inset -2px -49px 40px #0003;
+}
+
+.piano-keys .key{
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.piano-keys .key span{
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    font-size: 18px;
+    text-align: center;
+    color: #0000004d;
+    font-family: Roboto;
+    font-weight: 500;
+}
+
+.piano-keys .black{
+    z-index: 2;
+    width: 44px;
+    height: 160px;
+    margin: 0 -22px 0 -22px;
+    border: 1px solid #000;
+    border-radius: 0 0 3px 3px;
+    box-shadow: -1px -1px 2px #ffffff33 inset, 0 -5px 2px 3px#00000099 inset, 0 2px 4px #00000080;
+    background: linear-gradient(45deg, #212121 0%, #545454 100%);
+    color: #ffffff80;
+}
+
+.piano-keys .black:active{
+    background: linear-gradient(180deg, #212121 0%, #545454 100%);
+}
+
+@media (max-width: 1024px) {
+
+    .smallScreen{
+        display: none;
+    }
+    .wrapper{
+        width: max-content;
+        padding: 70px 30px 30px;
+        border-radius: 20px;
+        background: linear-gradient(-65deg,#000,#222,#000,#666,#222 75%);
+        box-shadow: inset 0 1px 1px #ffffff70, 0 0 50px #00000080 inset, 0 5px 15px #00000080, inset -0.4rem 0.4rem #282828;
+    }
+
+    .piano-keys .white{
+        height: 240px;
+        width: 60px;
+        border: 2px solid #000;
+        border-left: 1px solid #fff2;
+        border-bottom: 1px solid #bababa;
+        margin: 0 1px 0;
+        border-radius: 0 0 5px 5px;
+        box-shadow: -1px 0 0 #ffffffcc inset, 0 0 3px #00000033, inset -15px 0 20px #0006, inset 3px 0 20px #fff, 0 5px 5px #000;
+        background: linear-gradient(to bottom, hsl(0, 0%, 93%) 0%, white 100%);
+        color: #0000004d;
+    }
+
+    .piano-keys .black{
+        z-index: 2;
+        height: 125px;
+        width: 42px;
+        margin: 0 -22px 0 -22px;
+        border: 1px solid #000;
+        border-radius: 0 0 3px 3px;
+        box-shadow: -1px -1px 2px #ffffff33 inset, 0 -5px 2px 3px#00000099 inset, 0 2px 4px #00000080;
+        background: linear-gradient(45deg, #212121 0%, #545454 100%);
+        color: #ffffff80;
+    }
+    @media (max-width: 425px){
+        .wrapper{
+            display: none;
+        }
+
+        .smallScreen{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        h1{
+            display: flex;
+            color: white;
+        }
+
+        img{
+            display: flex;
+            width: 40%;
+        }
+    }
+}

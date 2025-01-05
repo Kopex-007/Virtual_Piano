@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+  <body>
+
+    <div id="cursorBlur"></div>
+
+    <div class="smallScreen">
+      <h1>Please rotate your phone</h1>
+    <img src="ok.webp" alt="">
+    </div>
+    
+    <div class="wrapper">
+      <ul class="piano-keys">
+        <li class="key white" data-key="a">
+          <span>a</span>
+        </li>
+        <li class="key black" data-key="w">
+          <span>w</span>
+        </li>
+        <li class="key white" data-key="s">
+          <span>s</span>
+        </li>
+        <li class="key black" data-key="e">
+          <span>e</span>
+        </li>
+        <li class="key white" data-key="d">
+          <span>d</span>
+        </li>
+        <li class="key white" data-key="f">
+          <span>f</span>
+        </li>
+        <li class="key black" data-key="t">
+          <span>t</span>
+        </li>
+        <li class="key white" data-key="g">
+          <span>g</span>
+        </li>
+        <li class="key black" data-key="y">
+          <span>y</span>
+          <li class="key white" data-key="h">
+          <span>h</span>
+        </li>
+        <li class="key black" data-key="u">
+          <span>u</span>
+        </li>
+        <li class="key white" data-key="j">
+          <span>j</span>
+        </li>
+        <li class="key white" data-key="k">
+          <span>k</span>
+        </li>
+        <li class="key black" data-key="o">
+          <span>o</span>
+        </li>
+        <li class="key white" data-key="l">
+          <span>l</span>
+        </li>
+        <li class="key black" data-key="p">
+          <span>p</span>
+        </li>
+        <li class="key white" data-key=";">
+          <span>;</span>
+        </li>
+        
+      </ul>
+    </div>
+    <script>
+
+var crsrBlr = document.querySelector("#cursorBlur")
+
+document.addEventListener("mousemove",function(dets){
+    setTimeout(() => {
+      crsrBlr.style.left = dets.x - 250 + "px"
+      crsrBlr.style.top = dets.y - 250 + "px"
+    }, 150);
+})
+
+let keyPiano = {
+  "a" : 'Audio/a.wav',
+  "s" : 'Audio/s.wav',
+  "d" : 'Audio/d.wav',
+  "f" : 'Audio/f.wav',
+  "g" : 'Audio/g.wav',
+  "h" : 'Audio/h.wav',
+  "j" : 'Audio/j.wav',
+  "k" : 'Audio/k.wav',
+  "l" : 'Audio/l.wav',
+  ";" : 'Audio/;.wav',
+  "w" : 'Audio/w.wav',
+  "e" : 'Audio/e.wav',
+  "t" : 'Audio/t.wav',
+  "y" : 'Audio/y.wav',
+  "u" : 'Audio/u.wav',
+  "o" : 'Audio/o.wav',
+  "p" : 'Audio/p.wav'
+}
+document.addEventListener('keydown', 
+(event) => playPiano(event.key));
+function playPiano(key){
+    audio = new Audio(keyPiano[key]); 
+    audio.play();
+    let keyClick = document.querySelector(`[data-key="${key}"]`);
+    if(keyClick){
+        keyClick.classList.add('active');
+        const remmoveActive = setInterval(() => {
+            keyClick.classList.remove('active')
+        }, 500);
+    }
+}
+let keys = document.querySelectorAll('.key');
+keys.forEach(key => {
+    key.addEventListener('click', (e)=>{
+        playPiano(key.dataset.key);
+    })
+})
+    </script>
+  </body>
+</html>
